@@ -1,0 +1,18 @@
+pkgname=adapterremovalfixprefix
+pkgver=0.1
+pkgrel=1
+pkgdesc="Fixing reads that have clashing read names"
+arch=('any')
+url="http://it.inf.uni-tuebingen.de/?page_id=161"
+license=('custom')
+depends=('java-runtime')
+source=("AdapterRemovalFixPrefix.jar" "starter.sh")
+noextract=("AdapterRemovalFixPrefix.jar") 
+
+md5sums=('SKIP' 'SKIP')
+
+package() {
+  install -D -m755 "${srcdir}/AdapterRemovalFixPrefix.jar" "${pkgdir}/opt/$pkgname/AdapterRemovalFixPrefix.jar"
+  install -D -m755 "${srcdir}/starter.sh" "${pkgdir}/opt/$pkgname/starter.sh"
+  install -D -m755 "${pkgdir}/opt/$pkgname/starter.sh" "${pkgdir}/usr/bin/AdapterRemovalFixPrefix"
+}
