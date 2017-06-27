@@ -96,7 +96,7 @@ public class FixReadPrefix {
 
     private static void fixPrefixes(FastqReader freader, FastqWriter fwriter, InputStream in, OutputStream out) throws IOException {
         Iterable<Fastq> iterable = freader.read(in);
-        fwriter.write(out, StreamSupport.stream(iterable.spliterator(),false).map(f -> fixPrefix(f) )::iterator);
+        StreamSupport.stream(iterable.spliterator(),false).map(f -> fixPrefix(f) ).forEach( r -> { try { fwriter.write(out, r); } catch (IOException ioe) { throw new RuntimeException("Failed to write to output");} } );
         out.flush();
         out.close();
     }
