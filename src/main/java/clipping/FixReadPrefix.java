@@ -76,9 +76,9 @@ public class FixReadPrefix {
             return description;
         } else if ( description.startsWith("MT_") ) {
             return description.replaceFirst("^MT","M");
-        } else if ( description.matches("^[^ ]+ 1:.*") ) {
+        } else if ( description.matches("^[^ ]+ 1:.*") || description.endsWith ("/1") ) {
             return "F_"+description;
-        } else if ( description.matches("^[^ ]+ 2:.*") ) {
+        } else if ( description.matches("^[^ ]+ 2:.*") || description.endsWith ("/2") ) {
             return "R_"+description;
         }
 
