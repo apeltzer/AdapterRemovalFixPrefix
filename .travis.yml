@@ -1,7 +1,5 @@
 language: java
 sudo: false
-jdk:
-- oraclejdk8
 script: gradle build
 env:
 - version=0.0.5
